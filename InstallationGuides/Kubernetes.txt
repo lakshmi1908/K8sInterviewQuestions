@@ -15,8 +15,8 @@ apt -y install kubeadm kubectl kubelet
 #Open Below file and then comment disabled_plugin for CRI Runtime
 vi /etc/containerd/config.toml    (Add # in front of disabled_plugin in this file and save it)
 service containerd restart
+kubeadm init --advertiser-advertise-address 192.168.189.119 --pod-network-cidr=172.16.0.0/16
 
-kubeadm init
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
